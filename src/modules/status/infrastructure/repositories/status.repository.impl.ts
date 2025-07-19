@@ -1,10 +1,15 @@
+// Core
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+
+// Domain
 import { Status } from '@/modules/status/domain/models/status.model';
+import { StatusRepository } from '@/modules/status/domain/repositories/status.repository';
+
+// Infrastructure
 import { StatusEntity } from '@/modules/status/infrastructure/entities/status.entity';
 import { StatusMapper } from '@/modules/status/infrastructure/mappers/status.mapper';
-import { StatusRepository } from '@/modules/status/domain/repositories/status.repository';
 
 @Injectable()
 export class StatusRepositoryImpl implements StatusRepository {
