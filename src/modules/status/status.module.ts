@@ -9,6 +9,7 @@ import { StatusRepositoryImpl } from './infrastructure/repositories/status.repos
 // Application
 import { CreateStatusUseCase } from './application/use-cases/create-status.use-case';
 import { StatusService } from './application/services/status.service';
+import { FindByIdUseCase } from './application/use-cases/find-by-id.use-case';
 
 // Interfaces
 import { StatusController } from './interfaces/controllers/status.controller';
@@ -22,6 +23,7 @@ import { STATUS_INJECTION_TOKEN } from './domain/constants/statuses-injection-to
   providers: [
     StatusRepositoryImpl,
     CreateStatusUseCase,
+    FindByIdUseCase,
     StatusService,
     {
       provide: STATUS_INJECTION_TOKEN,
