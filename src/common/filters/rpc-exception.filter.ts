@@ -1,6 +1,5 @@
 // Core
 import { ArgumentsHost, Catch, ExceptionFilter, HttpStatus, Logger } from '@nestjs/common';
-import { BaseRpcContext } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 
 // Enums
@@ -21,8 +20,6 @@ export class RpcExceptionFilter implements ExceptionFilter {
     let stack = '';
     let httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
-    const ctx = host.switchToRpc().getContext<BaseRpcContext>();
-
     if (exception instanceof Error) {
       message = exception.message;
       stack = exception.stack ?? '';
@@ -36,7 +33,7 @@ export class RpcExceptionFilter implements ExceptionFilter {
     }
 
     Logger.error(
-      `❌ [RPC]\n\tErrorMessage: ${message}\n\tStack: ${stack}\n\tArguments: ${JSON.stringify(ctx.getArgs())}`,
+      `❌ [RPC]\n\tErrorMessage: ${message}\n\tStack: ${stack}\n`,
       RpcExceptionFilter.name,
     );
 

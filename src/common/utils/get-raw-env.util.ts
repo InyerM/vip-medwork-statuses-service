@@ -45,7 +45,7 @@ export function getRawEnv(configService?: ConfigService): PartialDeep<GetEnv> {
         port: process.env.POSTGRES_PORT,
         user: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
-        database: process.env.POSTGRES_DATABASE,
+        database: process.env.POSTGRES_DB,
       },
       rabbitmq: {
         url: process.env.RABBITMQ_URL,
@@ -72,7 +72,7 @@ export function getRawEnv(configService?: ConfigService): PartialDeep<GetEnv> {
       port: configService.get<number>('POSTGRES_PORT'),
       user: configService.get<string>('POSTGRES_USER'),
       password: configService.get<string>('POSTGRES_PASSWORD'),
-      database: configService.get<string>('POSTGRES_DATABASE'),
+      database: configService.get<string>('POSTGRES_DB'),
     },
     rabbitmq: {
       url: configService.get<string>('RABBITMQ_URL'),

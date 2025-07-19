@@ -12,10 +12,12 @@ import { RpcExceptionFilter } from '@/common/filters/rpc-exception.filter';
 
 // Modules
 import { RouterModule } from './../router/router.module';
+import { TypeormModule } from '@/modules/typeorm/typeorm.module';
 
 @Module({
   imports: [
     RouterModule,
+    TypeormModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',

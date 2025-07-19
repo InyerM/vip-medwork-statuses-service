@@ -14,7 +14,7 @@ export function getRabbitmqOptions({ url }: RabbitmqConfig): NestMicroserviceOpt
       queueOptions: {
         durable: true,
       },
-      noAck: false,
+      noAck: true,
     },
   } as NestMicroserviceOptions;
 }

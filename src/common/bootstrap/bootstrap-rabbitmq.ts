@@ -31,9 +31,6 @@ export async function bootstrapRabbitmq(
   const microservice = await NestFactory.createMicroservice(AppModule, rabbitmqOptions);
   configureAppWithRabbitMQ(microservice);
   await microservice.listen().then(() => {
-    Logger.log(
-      `RabbitMQ microservice is running 🚀 on amqp://${rabbitmqEnv.url}`,
-      bootstrapRabbitmq.name,
-    );
+    Logger.log(`RabbitMQ microservice is running 🚀 on ${rabbitmqEnv.url}`, bootstrapRabbitmq.name);
   });
 }
