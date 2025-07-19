@@ -6,6 +6,9 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 import { StatusService } from '@/modules/status/application/services/status.service';
 import { CreateStatusDto } from '@/modules/status/application/dto/create-status.dto';
 
+// Domain
+import { Status } from '@/modules/status/domain/models/status.model';
+
 @Controller('statuses')
 export class StatusController {
   public constructor(private readonly statusService: StatusService) {}
@@ -13,5 +16,10 @@ export class StatusController {
   @MessagePattern('statuses.create')
   public create(@Payload() dto: CreateStatusDto): Promise<void> {
     return this.statusService.createStatus(dto);
+  }
+
+  @MessagePattern('statuses.findById')
+  public findById(@Payload() id: string): Promise<Status | null> {
+    return this.statusService.findById(id);
   }
 }
