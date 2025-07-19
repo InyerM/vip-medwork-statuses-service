@@ -1,7 +1,7 @@
 // Core
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 
 // Domain
 import { Status } from '@/modules/status/domain/models/status.model';
@@ -41,5 +41,10 @@ export class StatusRepositoryImpl implements StatusRepository {
   public async findByName(name: string): Promise<Status | null> {
     const entity = await this.repository.findOneBy({ name });
     return entity ? StatusMapper.toDomain(entity) : null;
+  }
+
+  public async findByIds(ids: string[]): Promise<Status[]> {
+    const entities = await this.repository.find({ where: { id: In(ids) } });
+    return entities.map((entity) => StatusMapper.toDomain(entity));
   }
 }

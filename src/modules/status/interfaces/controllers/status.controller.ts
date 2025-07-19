@@ -22,4 +22,9 @@ export class StatusController {
   public findById(@Payload() id: string): Promise<Status | null> {
     return this.statusService.findById(id);
   }
+
+  @MessagePattern('statuses.findByIds')
+  public findByIds(@Payload() ids: string[]): Promise<Status[]> {
+    return this.statusService.findByIds(ids);
+  }
 }
