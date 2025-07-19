@@ -11,6 +11,7 @@ import { CreateStatusUseCase } from './application/use-cases/create-status.use-c
 import { StatusService } from './application/services/status.service';
 import { FindByIdUseCase } from './application/use-cases/find-by-id.use-case';
 import { FindByIdsUseCase } from './application/use-cases/find-by-ids.use-case';
+import { FindAllUseCase } from './application/use-cases/find-all.use-case';
 
 // Interfaces
 import { StatusController } from './interfaces/controllers/status.controller';
@@ -26,6 +27,7 @@ import { STATUS_INJECTION_TOKEN } from './domain/constants/statuses-injection-to
     CreateStatusUseCase,
     FindByIdUseCase,
     FindByIdsUseCase,
+    FindAllUseCase,
     StatusService,
     {
       provide: STATUS_INJECTION_TOKEN,

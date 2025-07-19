@@ -27,4 +27,9 @@ export class StatusController {
   public findByIds(@Payload() ids: string[]): Promise<Status[]> {
     return this.statusService.findByIds(ids);
   }
+
+  @MessagePattern('statuses.findAll')
+  public findAll(): Promise<Status[]> {
+    return this.statusService.findAll();
+  }
 }

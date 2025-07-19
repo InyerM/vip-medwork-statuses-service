@@ -6,6 +6,7 @@ import { CreateStatusDto } from '../dto/create-status.dto';
 import { CreateStatusUseCase } from '../use-cases/create-status.use-case';
 import { FindByIdUseCase } from '../use-cases/find-by-id.use-case';
 import { FindByIdsUseCase } from '../use-cases/find-by-ids.use-case';
+import { FindAllUseCase } from '../use-cases/find-all.use-case';
 
 // Domain
 import { Status } from '@/modules/status/domain/models/status.model';
@@ -16,6 +17,7 @@ export class StatusService {
     private readonly createStatusUseCase: CreateStatusUseCase,
     private readonly findByIdUseCase: FindByIdUseCase,
     private readonly findByIdsUseCase: FindByIdsUseCase,
+    private readonly findAllUseCase: FindAllUseCase,
   ) {}
 
   public createStatus(dto: CreateStatusDto): Promise<void> {
@@ -28,5 +30,9 @@ export class StatusService {
 
   public findByIds(ids: string[]): Promise<Status[]> {
     return this.findByIdsUseCase.execute(ids);
+  }
+
+  public findAll(): Promise<Status[]> {
+    return this.findAllUseCase.execute();
   }
 }
